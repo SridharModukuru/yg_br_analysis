@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breath Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            justify-content: space-between;
+        }
+        .graphs {
+            width: 65%;
+        }
+        .analysis {
+            width: 35%;
+            text-align: left;
+            font-size: 1.2em;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+        }
+        .breath-info {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #76c7c0;
+        }
+        .breath-info strong {
+            color: #ff8900;
+        }
+        h1 {
+            color: #ff8900;
+        }
+        .note {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.9em;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="graphs">
+            <img src="{{ url_for('static', filename=initial_image) }}" alt="Initial Sound Wave">
+            <img src="{{ url_for('static', filename=adjusted_image) }}" alt="Adjusted Sound Wave">
+        </div>
+        <div class="analysis">
+            <h1>Breath Rate Analysis</h1>
+            <p>Breath Rate: <strong>{{ peaks_per_minute }} breaths/minute</strong></p>
+            <p>Status: <strong>{{ breath_status }}</strong></p>
+        </div>
+    </div>
+    <div class="note">
+        Note: Make sure the audio is at least 10 seconds long with minimal disturbance and clear audio.
+    </div>
+</body>
+</html>
